@@ -29,7 +29,7 @@ def cli():
 
     pd.DataFrame(output_dict).T.to_csv(
         os.path.join(
-            os.path.expanduser("~/Desktop"),
+            os.path.expanduser("~/Documents"),
             "jpeg_infomations.csv",
         )
     )
