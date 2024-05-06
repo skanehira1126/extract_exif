@@ -1,9 +1,24 @@
-# jpeg-property
+# extract_exif
 
-Describe your project here.
+## 概要
+jpeg画像から情報を抜き出してcsvに書き出すスクリプト
 
-## 取得したいやつ
-- 露出時間: 33434: 0x829A
-- 絞り値: 37378: 0x829D
-- ISO速度: 34867: 0x8827
-- 焦点距離: 37386: 0x920A
+抽出情報
+
+- 露出時間（分数 / 少数）
+- F値
+- ISO感度
+- 焦点距離
+
+## 環境構築
+
+1. ryeのinstall
+2. gitのinstall
+3. パッケージのインストール: `rye install extract_exif --git https://github.com/skanehira1126/extract_exif`
+4. 実行用batファイルの作成
+
+```
+@echo off
+extract-exif %*
+```
+
