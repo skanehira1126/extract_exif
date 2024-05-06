@@ -3,6 +3,7 @@ import argparse
 import platform
 
 import pandas as pd
+from tqdm.auto import tqdm
 
 from extract_exif.proc import read_image, to_fraction, extract_info
 
@@ -22,7 +23,7 @@ def cli():
     args = parser.parse_args()
 
     output_dict = {}
-    for file in args.file:
+    for file in tqdm(args.file):
 
         exif_info_all = read_image(file)
 
