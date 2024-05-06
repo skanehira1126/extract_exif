@@ -1,5 +1,6 @@
 import os
 import argparse
+import platform
 
 import pandas as pd
 
@@ -27,9 +28,12 @@ def cli():
 
         output_dict[os.path.basename(file)] = extract_info(exif_info_all)
 
+    if platform.system() == "Windows":
+        encode = "shift-jis"
+    else:
+        encode = "utf-8"
+
     pd.DataFrame(output_dict).T.to_csv(
-        os.path.join(
-            os.path.expanduser("~/Documents"),
-            "jpeg_infomations.csv",
-        )
+        "jpeg_infomations.csv",
+        encoding=encode,
     )
