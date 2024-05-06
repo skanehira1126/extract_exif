@@ -27,4 +27,9 @@ def cli():
 
         output_dict[os.path.basename(file)] = extract_info(exif_info_all)
 
-    pd.DataFrame(output_dict).T.to_csv("~/Desktop/jpeg_infomations.csv")
+    pd.DataFrame(output_dict).T.to_csv(
+        os.path.join(
+            os.path.expanduser("~/Desktop"),
+            "jpeg_infomations.csv",
+        )
+    )
