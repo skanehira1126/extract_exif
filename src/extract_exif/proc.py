@@ -1,3 +1,5 @@
+from fractions import Fraction
+
 from PIL import Image
 
 
@@ -30,3 +32,16 @@ def extract_info(exif_info_all: Image.Exif) -> dict:
     extracted_info = {name: exif_tags.get(tag, "Not Found") for tag, name in tag_name_map.items()}
 
     return extracted_info
+
+
+def to_fraction(decimal, max_denominator=5000) -> str:
+    """
+    浮動小数点の数値を適当な分数表記に変換する.
+    """
+    # 分数
+    frac = Fraction(decimal)
+
+    # 適当な分数に変換
+    frac_str = str(frac.limit_denominator(max_denominator))
+
+    return frac_str

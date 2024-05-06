@@ -4,7 +4,7 @@ import platform
 
 import pandas as pd
 
-from extract_exif.reader import read_image, extract_info
+from extract_exif.proc import read_image, to_fraction, extract_info
 
 
 def get_parser():
@@ -26,7 +26,14 @@ def cli():
 
         exif_info_all = read_image(file)
 
-        output_dict[os.path.basename(file)] = extract_info(exif_info_all)
+        exif_info = extract_info(exif_info_all)
+        # 露出時間を分数表記に変換
+        try:
+            exif_info["露出時間（分数）"] = to_fraction(float(exif_info["露出時間"]))
+        except:
+            exif_info["露出時間（分数）"] = "Not Found"
+
+        output_dict[os.path.basename(file)] = exif_info
 
     if platform.system() == "Windows":
         encode = "shift-jis"
