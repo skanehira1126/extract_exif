@@ -41,6 +41,6 @@ def cli():
         encode = "utf-8"
 
     pd.DataFrame(output_dict).T.sort_index().to_csv(
-        "jpeg_infomations.csv",
+        "写真情報.csv",
         encoding=encode,
     )
