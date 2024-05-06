@@ -33,7 +33,7 @@ def cli():
     else:
         encode = "utf-8"
 
-    pd.DataFrame(output_dict).T.to_csv(
+    pd.DataFrame(output_dict).T.sort_index().to_csv(
         "jpeg_infomations.csv",
         encoding=encode,
     )
