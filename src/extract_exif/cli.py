@@ -41,12 +41,22 @@ def cli():
     for file in tqdm(args.file):
         if os.path.isdir(file):
             for name in os.listdir(file):
-                if name.endswith(".jpeg") or name.endswith(".jpg"):
+                if (
+                    name.endswith(".jpeg")
+                    or name.endswith(".jpg")
+                    or name.endswith(".JPEG")
+                    or name.endswith(".JPG")
+                ):
                     file_path = os.path.join(file, name)
                     exif_info = extract(file_path)
                     exif_info["ファイル名"] = name
                     output_list.append(exif_info)
-        elif file.endswith(".jpeg") or file.endswith(".jpg"):
+        elif (
+            file.endswith(".jpeg")
+            or file.endswith(".jpg")
+            or file.endswith(".JPEG")
+            or file.endswith(".JPG")
+        ):
             exif_info = extract(file)
             exif_info["ファイル名"] = os.path.basename(file)
             output_list.append(exif_info)
