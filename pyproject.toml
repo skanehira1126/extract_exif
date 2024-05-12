@@ -1,14 +1,15 @@
 [project]
 name = "extract-exif"
-version = "0.1.0"
-description = "jpeg写真からexif情報を取得するCLI"
+description = "jpeg写真からexif情報を取得するツール群"
+dynamic = ["version"]
 authors = [
     { name = "Shinichi Kanehira", email = "skanehir1126@gmail.com" }
 ]
 dependencies = [
     "pillow>=10.3.0",
-    "pandas>=2.0.3",
+    "pandas>=2.2.2",
     "tqdm>=4.66.4",
+    "streamlit>=1.34.0",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
@@ -19,10 +20,15 @@ build-backend = "hatchling.build"
 
 [tool.rye]
 managed = true
-dev-dependencies = []
+dev-dependencies = [
+    "ipython>=8.24.0",
+]
 
 [tool.hatch.metadata]
 allow-direct-references = true
+
+[tool.hatch.version]
+path = "src/extract_exif/__init__.py"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/extract_exif"]

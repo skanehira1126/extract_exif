@@ -1,11 +1,13 @@
-import os
 import argparse
+import os
 import platform
 
 import pandas as pd
 from tqdm.auto import tqdm
 
-from extract_exif.proc import read_image, to_fraction, extract_info
+from extract_exif.proc import extract_info
+from extract_exif.proc import read_image
+from extract_exif.proc import to_fraction
 
 
 def get_parser():
